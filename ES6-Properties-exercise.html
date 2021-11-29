@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+        <input type="text" name="first" placeholder="First name">
+        <input type="text" name="surname" placeholder="Surname">
+        <label>
+        Accept terms:
+        <input name="terms" type="checkbox">
+        </label>
+        <button>Submit</button>
+    </form>  
+    
+    <!-- Whenever some input data changes, this is where we want the data to be displayed -->
+    <div id="formdata"></div>    
+    <script>
+        let formInput = {
+            first: "",
+            surname: "",
+            terms: false
+        }
+
+        document.querySelector("form").addEventListener("change", function(e){
+
+            console.log( e.target );      // <- Element that triggered the change event
+            console.log( e.target.type ); // <- Type: e.g. "text", "checkbox", etc.
+            console.log( e.target.name ); // <- name property value, e.g. "first", etc.
+
+            // YOUR CODE HERE >> You must call renderFormData( ... )
+
+            // << YOUR CODE HERE
+
+        });
+
+        function renderFormData( key, value ){
+
+            formInput = {
+                // YOUR CODE HERE >>
+
+                // << YOUR CODE HERE
+            }
+
+            document.querySelector("#formdata").innerHTML = `
+                <p>First name: ${formInput.first}</p>
+                <p>Surname: ${formInput.surname}</p>
+                <p>Terms accepted: ${formInput.terms}</p>
+            `  
+        }
+
+        renderFormData();        
+    </script>    
+</body>
+</html>

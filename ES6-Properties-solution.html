@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        <input type="text" name="first" placeholder="First name">
+        <input type="text" name="surname" placeholder="Surname">
+        <label>
+        Accept terms:
+        <input name="terms" type="checkbox">
+        </label>
+        <button>Submit</button>
+    </form>  
+    <div id="formdata"></div>    
+
+    <script>
+        let formInput = {
+            first: "",
+            surname: "",
+            terms: false
+        }
+        
+        document.querySelector("form").addEventListener("change", function(e){
+        
+            /* CODE HERE... */
+            // You must call renderFormData( ... ) in here... 
+            if ( e.target.type === "checkbox" ){
+                renderFormData( e.target.name, e.target.checked );
+            } else {
+                renderFormData( e.target.name, e.target.value );
+            }
+        
+        });
+        
+        function renderFormData( key, value ){
+        
+            formInput = {
+                ...formInput,
+                [key]: value
+            }
+        
+            document.querySelector("#formdata").innerHTML = `
+                <p>First name: ${formInput.first}</p>
+                <p>Surname: ${formInput.surname}</p>
+                <p>Terms accepted: ${formInput.terms}</p>
+            `  
+        }
+        
+        renderFormData();
+    </script>
+
+</body>
+</html>
